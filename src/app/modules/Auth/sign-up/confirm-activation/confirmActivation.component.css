@@ -1,0 +1,68 @@
+    .main-container {
+        max-width: 450px;
+        margin: auto;
+        padding: 4rem 1rem;
+    }
+
+    /* BOX ILLUSTRATION */
+    .top-illustration {
+        margin-bottom: 1.2rem;
+        width: 13rem;
+    }
+
+        .top-illustration img {
+            width: 100%;
+            height: auto;
+        }
+   
+
+   
+
+    
+    /* TEXT SECTION */
+    .text-section {
+        text-align: left;
+        margin-bottom: 2rem;
+    }
+
+    .step {
+        color: #6b7280;
+        font-size: 0.875rem;
+    }
+
+    .title {
+        font-size: 1.7rem;
+        font-weight: bold;
+        margin: 1rem 0;
+    }
+
+    .description {
+        color: #374151;
+        font-size: 0.93rem;
+    }
+
+    /* CHECKBOX */
+    .checkbox-container {
+        display: flex;
+        gap: 0.75rem;
+        margin-bottom: 1.5rem;
+        cursor: pointer;
+        align-items: center;
+    }
+
+    /* BUTTON */
+    .submit-btn {
+        width: 100%;
+        background: #e50914;
+        color: white;
+        border: none;
+        padding: 1rem;
+        font-size: 1.25rem;
+        font-weight: bold;
+        border-radius: 6px;
+        cursor: pointer;
+    }
+
+    .submit-btn:hover {
+        background: #c40812;
+    }

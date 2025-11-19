@@ -1,0 +1,162 @@
+<!-- <header class="header">
+  <div class="header-container">
+    <button  class="back-link" routerLink="/signup/choose-payment">
+      <svg
+        class="back-icon"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M15 19l-7-7 7-7"
+        ></path>
+      </svg>
+      Change payment method
+    </button>
+  </div>
+</header>
+
+<main id="main" class="main">
+  <div class="step-text">Step 3 of 3</div>
+
+  <h1 class="main-title">Get your Fawry reference code</h1>
+
+  <p class="paragraph">We'll send your code to this phone number.</p>
+
+  <p class="paragraph">
+    Your number will also be used if you forget your password and for important
+    account messages. SMS fees may apply.
+  </p>
+
+  <div class="input-group">
+    <input type="tel" placeholder="Mobile number" class="input-field" />
+  </div>
+
+  <div class="plan-box">
+    <div>
+      <div class="plan-price">EGP 240/month</div>
+      <div class="plan-type">Premium</div>
+    </div>
+    <button class="plan-change" routerLink="/signup/confirm-plan">Change</button>
+  </div>
+
+  <div class="terms">
+    <p>
+      By checking the checkbox below, you agree to our
+      <a href="#" class="link">Terms of Use</a>,
+      <a href="#" class="link">Privacy Statement</a>, and that you are over 18.
+      Netflix will automatically continue your membership and charge the
+      membership fee (currently EGP 240/month) to your payment method until you
+      cancel. You may cancel at any time to avoid future charges.
+    </p>
+  </div>
+
+  <div class="checkbox-group">
+    <label class="checkbox-label">
+      <input type="checkbox" class="checkbox" />
+      <span>I agree.</span>
+    </label>
+  </div>
+
+  <button class="start-btn">Start Membership</button>
+</main> -->
+
+<header class="header">
+  <div class="header-container">
+    <button class="back-link" routerLink="/signup/choose-payment">
+      <svg class="back-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M15 19l-7-7 7-7"
+        ></path>
+      </svg>
+      Change payment method
+    </button>
+  </div>
+</header>
+
+<main id="main" class="main">
+  <!-- FORM -->
+  <form #f="ngForm" (ngSubmit)="submit(f)">
+    <div class="step-text">Step 3 of 3</div>
+
+    <h1 class="main-title">Get your Fawry reference code</h1>
+
+    <p class="paragraph">We'll send your code to this phone number.</p>
+
+    <p class="paragraph">
+      Your number will also be used if you forget your password and for important account messages.
+      SMS fees may apply.
+    </p>
+
+    <!-- PHONE INPUT -->
+    <div class="input-group">
+      <input
+        type="tel"
+        placeholder="Mobile number"
+        class="input-field"
+        name="phone"
+        [(ngModel)]="phone"
+        #phoneCtrl="ngModel"
+        required
+        pattern="^(010|011|012|015)[0-9]{8}$"
+        [class.error]="phoneCtrl.invalid && phoneCtrl.touched"
+      />
+
+      <!-- ERROR MESSAGES -->
+      @if (phoneCtrl.touched && phoneCtrl.invalid) {
+      <p class="error-message">
+        @if (phoneCtrl.errors?.['required']) {
+        <span>Mobile number is required.</span>
+        } @if (phoneCtrl.errors?.['pattern']) {
+        <span>Please enter a valid Egyptian mobile number.</span>
+        }
+      </p>
+      }
+    </div>
+
+    <!-- PLAN BOX -->
+    <div class="plan-box">
+      <div>
+        <div class="plan-price">EGP 240/month</div>
+        <div class="plan-type">Premium</div>
+      </div>
+      <a class="plan-change" routerLink="/signup/confirm-plan"> Change </a>
+    </div>
+
+    <div class="terms">
+      <p>
+        By checking the checkbox below, you agree to our
+        <a href="#" class="link">Terms of Use</a>, <a href="#" class="link">Privacy Statement</a>,
+        and that you are over 18.
+      </p>
+    </div>
+
+    <!-- CHECKBOX -->
+    <div class="checkbox-group">
+      <label class="checkbox-label">
+        <input
+          type="checkbox"
+          class="checkbox"
+          name="agree"
+          [(ngModel)]="agree"
+          #agreeCtrl="ngModel"
+          required
+        />
+        <span>I agree.</span>
+      </label>
+
+      @if (agreeCtrl.touched && agreeCtrl.invalid) {
+      <p class="error-message">You must agree to the terms.</p>
+      }
+    </div>
+
+    <!-- BUTTON -->
+    <button class="start-btn" [disabled]="f.invalid">Start Membership</button>
+  </form>
+</main>

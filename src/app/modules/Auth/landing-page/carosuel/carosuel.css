@@ -1,0 +1,60 @@
+.netflix-scroll {
+  scroll-behavior: smooth;
+  /* padding: 10px 40px; */
+  white-space: nowrap;
+}
+/* for Chrome, Edge, Safari */
+.netflix-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* for Firefox */
+.netflix-scroll {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+}
+
+/* improve touch scrolling on iOS */
+.netflix-scroll {
+  -webkit-overflow-scrolling: touch;
+}
+
+
+.scroll-btn {
+
+      height: 7.5rem;
+    width: 1.5rem;
+    border-radius: 0.5rem;
+    border: none;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    padding: 0px;
+    margin: 0px;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    color: rgba(255, 255, 255, 0.7);
+    background-color: rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+}
+
+.left-btn {
+  position: absolute;
+  top:50%;
+  transform: translateY(-50%);
+  left: 5px;
+  z-index: 50;
+}
+
+.right-btn {
+    position: absolute;
+  top:50%;
+  transform: translateY(-50%);
+  right: 10px;
+  z-index: 50;
+}
+
+.scroll-btn:hover {
+  background: rgba(255, 255, 255, 0.5);
+}

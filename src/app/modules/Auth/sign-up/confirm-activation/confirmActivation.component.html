@@ -1,0 +1,26 @@
+<main id="main" class="main-container">
+  <div class="top-illustration">
+    <img
+      src="https://assets.nflxext.com/ffe/siteui/acquisition/simplicity/Devices.png"
+      alt="Devices Illustration"
+    />
+  </div>
+
+  <div class="text-section">
+    <p class="step">Step 1 of 3</p>
+    <h1 class="title">Finish setting up your account</h1>
+    <p class="description">
+      We'll send a sign-up link to <strong>{{userEmail()}}</strong>,
+      so you can use Netflix without a password on any device at any time.
+    </p>
+  </div>
+
+  <label class="checkbox-container">
+    <input type="checkbox" />
+    <span>Please do not email me Netflix special offers.</span>
+  </label>
+
+  <button class="submit-btn"  (click)="sendEmail()">
+    Send link
+  </button>
+</main>

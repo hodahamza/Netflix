@@ -1,0 +1,105 @@
+
+
+ .header-container {
+     max-width: 1200px;
+     margin: auto;
+     padding: 1rem;
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     
+ }
+
+  .logo {
+      height: 36px;
+      display: inline-block;
+      text-decoration: none;
+  }
+
+  .logo-img {
+      height: 100%;
+      width: auto;
+      display: block;
+  }
+
+ .btn-signin ::ng-deep button {
+   padding:0.20rem 0.7rem;
+    border-radius: 0.25rem;
+    background: rgb(229, 9, 20);
+    color: rgb(255, 255, 255);
+    font-size: 14px;
+    border: none;
+    margin-right: 5px;
+
+}
+
+
+.btn-language ::ng-deep  .language-select-wrapper {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    width: 120px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    background-color: transparent;
+        color: white;
+    padding: 3px 5px;
+    font-family: sans-serif;
+    cursor: pointer;
+}
+
+.btn-language ::ng-deep  .language-icon {
+    
+    display: flex;
+    align-items: center;
+    color: inherit;
+}
+
+.btn-language ::ng-deep  .language-select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: none;
+    background: transparent;
+    flex: 1;
+    font-size: 14px;
+    color: inherit;
+    cursor: pointer;
+    padding: 4px 0;
+}
+.btn-language ::ng-deep  .language-select option {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: none;
+    background: transparent;
+    margin-top: 35px;
+    flex: 1;
+    font-size: 14px;
+    color: #374151;
+    cursor: pointer;
+    padding: 4px 0;
+    text-align: center;
+    /* width: auto; */
+}
+
+.btn-language ::ng-deep  .language-select:focus {
+    outline: none;
+}
+
+
+
+.btn-language ::ng-deep  .caret-icon {
+    position: absolute;
+    right: 8px;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    /* color: #6b7280; */
+    color: inherit;
+}
+
+ /* .signin-btn:hover {
+     text-decoration: underline;
+     background-color: rgba(95, 95, 95, 0.315);
+ } */

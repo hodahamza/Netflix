@@ -1,0 +1,28 @@
+<main id="main" class="main-container">
+  <div class="content-box">
+    <div class="illustration">
+      <div class="card">
+        <img
+          src="https://dnm.nflximg.net/api/v6/QqNdfvCShgtu-ra1rla_KxCcSSY/AAAAQAmpros-eVHttd-jyVbIiMTW885cisEwMOLTGkTzHQifWIkevLiCu24tEsptsw.png?r=bff"
+          alt=""
+        />
+      </div>
+    </div>
+
+    <div class="step-text">Step 1 of 3</div>
+    <h1 class="title">Check your inbox</h1>
+
+    <p class="description">
+      We sent a sign-up link to
+      <span class="highlight">{{userEmail()}}</span>. Tap the link in
+      the email to finish setting up your account.
+    </p>
+
+    <div class="button-group">
+      <button class="btn-primary" (click)="resendLink()">Resend Link</button>
+      <button class="btn-secondary" routerLink="/signup/create-password">
+        Create Password Instead
+      </button>
+    </div>
+  </div>
+</main>

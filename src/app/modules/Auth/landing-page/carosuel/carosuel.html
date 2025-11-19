@@ -1,0 +1,17 @@
+<div class="position-relative py-4">
+
+  <!-- زر شمال -->
+  
+  <!-- السلايدر -->
+  <button class="scroll-btn left-btn" (click)="scroll('left')">❮</button>
+  <div #scrollContainer class="d-flex gap-3 overflow-auto netflix-scroll ">
+  @for(item of items; track item.id){
+    <app-carosuel-card [item]="item"></app-carosuel-card>
+  }
+  
+  </div>
+
+  <!-- زر يمين -->
+  <button class="scroll-btn right-btn" (click)="scroll('right')">❯</button>
+
+</div>

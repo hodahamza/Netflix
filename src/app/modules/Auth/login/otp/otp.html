@@ -1,0 +1,22 @@
+<h1 class="title text-white text-center">Enter the code we just sent</h1>
+
+      <p class="description text-center">
+        We sent a sign-in code to<br>
+        <span>{{userEmail()}}</span>
+        It will expire in 15 minutes.
+      </p>
+
+      <div class="code-wrapper">
+        <input type="text" maxlength="1" class="code-input" />
+        <input type="text" maxlength="1" class="code-input" />
+        <input type="text" maxlength="1" class="code-input" />
+        <input type="text" maxlength="1" class="code-input" />
+      </div>
+
+      <button id="signin-btn" class="btn text-white w-100 py-2 mb-5">Sign In</button>
+
+      <p class="small-text text-center mb-0">Didn't receive a code?</p>
+
+      <button id="pass-btn" class="btn text-white w-100 py-2 ">Use Password Instead</button>
+
+      <button id="resend-btn" class="btn text-center w-100 text-white">Resend Code</button>

@@ -1,0 +1,148 @@
+footer {
+    padding: 25px 16px 50px 16px;
+    /* background-color: #f2f2f2; */
+    /* color: rgb(255, 255, 255); */
+}
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+}
+
+/* Top text */
+.header-text p {
+    color: inherit;
+    margin-bottom: 1rem;
+}
+
+.link {
+     color: inherit;
+    text-decoration: underline;
+}
+
+.link:hover {
+    color: #111827;
+}
+
+/* Grid links */
+.grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+    .grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* Language button */
+.lang-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid #d1d5db;
+    padding: 10px 14px;
+    border-radius: 6px;
+    background: white;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.lang-btn:hover {
+    background: #f9fafb;
+}
+
+.arrow {
+    color: #9ca3af;
+}
+
+/* Bottom info (layout) */
+.bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+}
+
+/* Windows activation box */
+.windows-info {
+    text-align: right;
+    /* color: #d1d5db; */
+
+    color: inherit;
+}
+
+.windows-info .title {
+    font-size: 18px;
+    color: inherit;
+    margin-bottom: 4px;
+}
+
+.windows-info .subtitle {
+    font-size: 14px;
+}
+.language-select-wrapper {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    width: 160px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    /* background-color: rgb(255, 255, 255); */
+        color: white;
+    padding: 3px 5px;
+    font-family: sans-serif;
+    cursor: pointer;
+}
+
+.language-icon {
+    margin-right: 8px;
+    display: flex;
+    align-items: center;
+    /* color: #374151; */
+    color: inherit;
+}
+
+.language-select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: none;
+    background: transparent;
+    flex: 1;
+    font-size: 14px;
+    color: inherit;
+    cursor: pointer;
+    padding: 4px 0;
+}
+.language-select option {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: none;
+    background: transparent;
+    flex: 1;
+    font-size: 14px;
+    color: #374151;
+    cursor: pointer;
+    padding: 4px 0;
+}
+
+.language-select:focus {
+    outline: none;
+}
+
+
+
+.caret-icon {
+    position: absolute;
+    right: 8px;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    /* color: #6b7280; */
+    color: inherit;
+}

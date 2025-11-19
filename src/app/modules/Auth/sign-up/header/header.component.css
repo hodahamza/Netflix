@@ -1,0 +1,48 @@
+ .header {
+     border-bottom: 1px solid #e5e7eb;
+ }
+
+ .header-container {
+     max-width: 1200px;
+     margin: auto;
+     padding: 1rem;
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+ }
+
+  .logo {
+      height: 36px;
+      display: inline-block;
+      text-decoration: none;
+  }
+
+  .logo-img {
+      height: 100%;
+      width: auto;
+      display: block;
+  }
+
+ .signin-btn {
+     background: none;
+     border: none;
+     font-size: 0.9rem;
+     font-weight: 700;
+     cursor: pointer;
+     border-radius: 0.25rem;
+     padding: 0.2rem 1rem;
+     transition: all 0.3s ease;
+     -webkit-transition: all 0.3s ease;
+     -moz-transition: all 0.3s ease;
+     -ms-transition: all 0.3s ease;
+     -o-transition: all 0.3s ease;
+     -webkit-border-radius: 0.25rem;
+     -moz-border-radius: 0.25rem;
+     -ms-border-radius: 0.25rem;
+     -o-border-radius: 0.25rem;
+}
+
+ .signin-btn:hover {
+     text-decoration: underline;
+     background-color: rgba(95, 95, 95, 0.315);
+ }

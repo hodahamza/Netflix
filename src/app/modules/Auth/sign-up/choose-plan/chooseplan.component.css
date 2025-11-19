@@ -1,0 +1,83 @@
+    .main-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 3rem 1rem;
+        min-height: 100vh;
+        text-align: start;
+}
+.content-box {
+    width: 100%;
+    max-width: 450px;
+    text-align: left;
+}
+
+    .circle-icon {
+        width: 4rem;
+        height: 4rem;
+        border: 2px solid #e50914;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 2rem;
+    }
+
+    .check-icon {
+        width: 2rem;
+        height: 2rem;
+        color: #e50914;
+    }
+
+    .step {
+        color: #6b7280;
+        font-size: 0.875rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .title {
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: #111827;
+        margin-bottom: 3rem;
+    }
+
+    /* FEATURES */
+    .features {
+        max-width: 450px;
+        width: 100%;
+        margin-bottom: 3rem;
+    }
+
+    .feature-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1.25rem;
+        font-size: 1.1rem;
+        color: #1f2937;
+    }
+
+    .feature-icon {
+        width: 1.5rem;
+        height: 1.5rem;
+        color: #e50914;
+        margin-right: 0.75rem;
+    }
+
+    /* BUTTON */
+    .btn-primary {
+        width: 100%;
+        background: #e50914;
+        color: #fff;
+        border: none;
+        padding: 1rem 4rem;
+        font-size: 1.25rem;
+        font-weight: bold;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background 0.2s;
+    }
+
+    .btn-primary:hover {
+        background: #c40812;
+    }
