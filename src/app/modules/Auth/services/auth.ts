@@ -1,23 +1,31 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
 import { Iplan } from '../interfaces/iplan';
+import { StorageService } from '../../services/storageService/storage-service';
 
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
+  private storageService =inject(StorageService)
   private BASE_URL = "https://localhost:7263"
-  private  _userEmail =signal<string>("");
+  private  _userEmail =signal<string>(`${this.storageService.getEmail}`);
   userEmail =  this._userEmail.asReadonly();
+
+   
   
 
   private httpClient = inject(HttpClient)
 
-  setUserEmail(email:string){
+  SetUserEmail(email:string){
     this._userEmail.set(email);
+    
   }
 
+  // saveUserEmail(){
+    
+  // }
 
   sendEmail(email:string){
   return this.httpClient.post(`${this.BASE_URL}/api/Auth/send-magic-link` , {email})

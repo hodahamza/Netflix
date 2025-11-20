@@ -1,3 +1,5 @@
+import { StorageService } from './../../services/storageService/storage-service';
+
 import { Component, signal } from '@angular/core';
 import { Header } from "../../header/header";
 import { Carosuel } from "./carosuel/carosuel";
@@ -12,10 +14,12 @@ import { AuthService } from '../services/auth';
 })
 export class LandingPage {
   isExistEmail=signal<boolean>(false)
-  constructor(private _authService:AuthService , private _router:Router){}
+  constructor(private _authService:AuthService , private _router:Router , private storageService:StorageService){}
 
   onGetStartedClick(email:string){
-    this._authService.setUserEmail(email);
+    this.storageService.saveEmail(email);
+    
+    this._authService.SetUserEmail(this.storageService.getEmail);
     console.log(email);
     
     this.chekEmail(email)
