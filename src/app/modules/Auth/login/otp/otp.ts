@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { AuthService } from '../../services/auth';
-import { RouterLink } from "@angular/router";
+import { Router, RouterLink } from "@angular/router";
 
 @Component({
   selector: 'app-otp',
@@ -9,13 +9,27 @@ import { RouterLink } from "@angular/router";
   styleUrl: './otp.css',
 })
 export class OTP {
+  private router = inject(Router)
   private _authService = inject(AuthService)
   userEmail = this._authService.userEmail
 
   onSignIn(first:string , second:string , third:string , forth:string){
     const code = first+second+third+forth;
-    console.log(code);
+    const loginWihtOtp ={
+      Email:this.userEmail(),
+      Code:code
+    }
+    console.log(loginWihtOtp);
     
+    this._authService.loginWithOtp(loginWihtOtp).subscribe({
+      next:(res)=>{
+        console.log(res);
+        this.router.navigate(['/home'])
+      },
+      error:(err)=>{
+        console.log(err);
+      }
+    })
   }
 
   resendCode(){

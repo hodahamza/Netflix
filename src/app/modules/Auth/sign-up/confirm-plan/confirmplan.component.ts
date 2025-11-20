@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: "lib-confirmplan.component",
-  imports: [RouterLink , FormsModule],
+  imports: [ FormsModule],
   templateUrl: "./confirmplan.component.html",
   styleUrl: "./confirmplan.component.css",
 })

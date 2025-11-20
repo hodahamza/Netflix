@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
 import { Iplan } from '../interfaces/iplan';
+import { ConfirmEmailRequest } from '../interfaces/iConfirmmail';
 import { StorageService } from '../../services/storageService/storage-service';
 
 
@@ -34,6 +35,9 @@ export class AuthService {
   checkIfExistEmail(email:string){
     return this.httpClient.post(`${this.BASE_URL}/api/Auth/check-email` , {email})
   }
+  confrmMail(credentials:ConfirmEmailRequest){
+    return this.httpClient.post(`${this.BASE_URL}/api/Auth/confirm-signup` , credentials)
+  }
 
   registerWithEmailAndPass(regsData:{email:string , password:string}){
     console.log("from auth service " , regsData);
@@ -58,7 +62,7 @@ export class AuthService {
     return this.httpClient.post(`${this.BASE_URL}/api/Auth/request-otp` , {email})
    }
 
-   loginWithOtp(logindata:{email:string , code:string}){
+   loginWithOtp(logindata:{Email:string , Code:string}){
        return this.httpClient.post(`${this.BASE_URL}/api/Auth/login-otp` , logindata)
    }
 
