@@ -7,16 +7,16 @@
       </p>
 
       <div class="code-wrapper">
-        <input type="text" maxlength="1" class="code-input" />
-        <input type="text" maxlength="1" class="code-input" />
-        <input type="text" maxlength="1" class="code-input" />
-        <input type="text" maxlength="1" class="code-input" />
+        <input #first type="text" maxlength="1" class="code-input" />
+        <input #second type="text" maxlength="1" class="code-input" />
+        <input #third type="text" maxlength="1" class="code-input" />
+        <input #forth type="text" maxlength="1" class="code-input" />
       </div>
 
-      <button id="signin-btn" class="btn text-white w-100 py-2 mb-5">Sign In</button>
+      <button id="signin-btn" class="btn text-white w-100 py-2 mb-5" (click)="onSignIn(first.value , second.value , third.value ,forth.value)">Sign In</button>
 
       <p class="small-text text-center mb-0">Didn't receive a code?</p>
 
-      <button id="pass-btn" class="btn text-white w-100 py-2 ">Use Password Instead</button>
+      <button id="pass-btn" class="btn text-white w-100 py-2" routerLink="/login/login-password">Use Password Instead</button>
 
-      <button id="resend-btn" class="btn text-center w-100 text-white">Resend Code</button>
+      <button id="resend-btn" class="btn text-center w-100 text-white" (click)="resendCode()">Resend Code</button>

@@ -10,6 +10,7 @@ export class AuthService {
   private BASE_URL = "https://localhost:7263"
   private  _userEmail =signal<string>("");
   userEmail =  this._userEmail.asReadonly();
+  
 
   private httpClient = inject(HttpClient)
 
@@ -31,7 +32,26 @@ export class AuthService {
     
    return this.httpClient.post(`${this.BASE_URL}/api/Auth/register`,regsData)
   }
-   getAllPlans(){
+
+  getAllPlans(){
     return this.httpClient.get<Iplan>(`${this.BASE_URL}/api/Subscription/plans`)
+  }
+  // subscripePlan(){
+  //   this.httpClient.post(`${this.BASE_URL}`)
+  // }
+
+// * login EndPoints
+   loginWithEmailAndPassword(loginData:{email:string , password:string}){
+    console.log("from auth service" , loginData);
+    
+    return this.httpClient.post(`${this.BASE_URL}/api/Auth/login` , loginData)
    }
+   requestOtp(email:string){
+    return this.httpClient.post(`${this.BASE_URL}/api/Auth/request-otp` , {email})
+   }
+
+   loginWithOtp(logindata:{email:string , code:string}){
+       return this.httpClient.post(`${this.BASE_URL}/api/Auth/login-otp` , logindata)
+   }
+
 }

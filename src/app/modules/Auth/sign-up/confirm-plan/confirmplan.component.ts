@@ -1,14 +1,16 @@
 import { AuthService } from './../../services/auth';
 import { Component, inject, OnInit } from "@angular/core";
 import { RouterLink } from "@angular/router";
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: "lib-confirmplan.component",
-  imports: [RouterLink],
+  imports: [RouterLink , FormsModule],
   templateUrl: "./confirmplan.component.html",
   styleUrl: "./confirmplan.component.css",
 })
 export class ConfirmplanComponent implements OnInit {
+  selectedPlan: string | null = null; 
   private _authService = inject(AuthService)
   ngOnInit(): void {
    this._authService.getAllPlans().subscribe({
@@ -21,4 +23,13 @@ export class ConfirmplanComponent implements OnInit {
    })
   }
 
+
+  onSubmit(value:any){
+    console.log(value);
+    
+  }
+
 }
+
+
+

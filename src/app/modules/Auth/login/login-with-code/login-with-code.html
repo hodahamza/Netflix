@@ -1,24 +1,25 @@
 
       <h1 class="text-white mb-4">Sign In</h1>
 
-      <form class="mb-3">
+      
   <div class="mb-3">
     <input 
+      #input
       type="text"
       class="form-control"
       placeholder="Email or mobile number"
-      value="mahmoudhamzawui@gmail.com"
+      
     >
   </div>
 
 
-     <button type="submit" class="btn btn-netflix w-100 mb-3" routerLink="/login/otp">Send Sign-In code</button>
-      </form>
+     <button type="submit" class="btn btn-netflix w-100 mb-3" (click)="getCode(input)" >Send Sign-In code</button>
+    
       <div class="text-center text-secondary mb-3">
   OR
 </div>
 
- <button class="btn btn-gray w-100 mb-4" routerLink="/login">Use Password</button>
+ <button class="btn btn-gray w-100 mb-4"  routerLink="/login">Use Password</button>
 
     <div id="ForgetPass" class="text-center mb-3">
       <a href="#" class="text-decoration-underline">Forgot Email or Phone Number?</a>

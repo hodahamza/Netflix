@@ -1,1 +1,33 @@
 /* You can add global styles to this file, and also import other style files */
+.error-msg small {
+  color: #ffb3b3;
+  font-size: 0.8rem;
+  display: block;
+  margin-top: 4px;
+}
+
+/* invalid input */
+input.ng-touched.ng-invalid {
+  border: 1px solid #e50914 !important;
+}
+
+/* valid input */
+input.ng-touched.ng-valid {
+  border: 1px solid #28a745 !important;
+}
+
+ .form-control {
+   background-color: transparent !important;
+   color: #fff !important;
+   padding: 0.9rem !important;
+ }
+
+ input::placeholder {
+   color: rgb(136 123 125) !important;
+ }
+
+ .form-control:focus {
+   border-color: #fff !important;
+   outline: none;
+   box-shadow: none !important;
+ }

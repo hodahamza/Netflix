@@ -7,7 +7,7 @@
       </h1>
     </div>
 
-    <form class="plans-grid">
+    <form class="plans-grid" >
       <!-- BASIC -->
       <label>
         <input type="radio" name="plan" class="plan-input" />
@@ -139,9 +139,19 @@
       Live events are included with any Netflix plan and contain ads.
     </p>
     <div style="display: flex; justify-content: center; margin-top: 2rem">
-      <button class="btn-primary" routerLink="/signup/choose-payment">
+      <button class="btn-primary" >
         Next
       </button>
     </div>
   </div>
 </main>
+
+<!-- 
+routerLink="/signup/choose-payment"
+<label (click)="selectPlan(plans[0])">
+  <input type="radio" name="plan" class="plan-input" />
+  <div class="plan-card"> … </div>
+</label> 
+
+
+-->

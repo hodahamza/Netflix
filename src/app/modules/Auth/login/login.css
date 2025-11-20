@@ -23,22 +23,7 @@
    overflow-wrap: normal;
  }
 
- .form-control {
-   background-color: transparent !important;
-   /* border: 1px solid #666 !important; */
-   color: #fff !important;
-   padding: 0.9rem !important;
- }
 
- input::placeholder {
-   color: rgb(136 123 125) !important;
- }
-
- .form-control:focus {
-   border-color: #fff !important;
-   outline: none;
-   box-shadow: none !important;
- }
 
  .btn-netflix , .btn-gray{
   color: white;
@@ -48,8 +33,9 @@
     padding: 0.375rem 1rem;
      transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
  }
- .btn-netflix {
+ .btn-netflix  , .btn-netflix[disabled] {
    background-color: #e50914;
+   
  }
 
  .btn-netflix:hover {
@@ -110,3 +96,7 @@
     font-size: 0.875rem;
     font-weight: 400;
  }
+
+
+ /* validation text */
+
