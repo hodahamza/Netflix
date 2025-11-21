@@ -43,12 +43,6 @@ main {
 }
 
 
-/* ====== RADIO HIDE ====== */
-.plan-input {
-    position: absolute;
-    opacity: 0;
-    pointer-events: none;
-}
 
 /* ====== CARD ====== */
 .plan-card {
@@ -60,45 +54,42 @@ main {
     transition: 0.25s;
     cursor: pointer;
     height: 100%;
+    padding: 5px;
 }
-
-.plan-card:hover {
-    transform: translateY(-2px);
+ .selected{
+     transform: translateY(-2px);
     box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
-}
-
-/* Selected */
-.plan-input:checked+.plan-card {
     border-color: #2563eb;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
-}
+ }
+
 
 /* ====== HEADERS ====== */
 .plan-header-basic {
     background: linear-gradient(to right, #2563eb, #7c3aed);
     color: #fff;
     padding: 16px;
+    border-radius: 10px;
 }
 
 .plan-header-standard {
     background: linear-gradient(to right, #1d4ed8, #6d28d9);
     color: #fff;
     padding: 16px;
+     border-radius: 10px;
 }
 
 .plan-header-premium {
     background: linear-gradient(to right, #1e3a8a, #5b21b6);
     color: #fff;
     padding: 16px;
-    position: relative;
+     border-radius: 10px;
 }
 
 /* ====== BADGE ====== */
 .badge {
     position: absolute;
-    top: 0;
-    right: 0;
-    background: #dc2626;
+    bottom:2px;
+    right: -4px;
     color: #fff;
     padding: 4px 10px;
     font-size: 12px;
@@ -107,7 +98,7 @@ main {
 }
 
 .plan-content {
-    padding: 24px;
+    padding: 16px;
 }
 
 .plan-content p {
@@ -115,12 +106,14 @@ main {
 }
 
 .label-small {
-    font-size: 14px;
+    font-size: 16px;
     color: #6b7280;
 }
 
 .value-large {
     color: #111827;
+     font-size: 18px;
+     font-weight: 600;
 }
 
 .plan-card p {

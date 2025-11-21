@@ -22,16 +22,7 @@
       display: block;
   }
 
- .btn-signin ::ng-deep button {
-   padding:0.20rem 0.7rem;
-    border-radius: 0.25rem;
-    background: rgb(229, 9, 20);
-    color: rgb(255, 255, 255);
-    font-size: 14px;
-    border: none;
-    margin-right: 5px;
 
-}
 
 
 .btn-language ::ng-deep  .language-select-wrapper {

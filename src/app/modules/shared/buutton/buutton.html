@@ -1,0 +1,21 @@
+<button 
+       [disabled]="isLoading || disabled"
+  [class]="buttonClass"
+  [type]="type"
+  (click)="handleClick()"
+  
+  >
+      
+    @if (!isLoading) {
+  <span class="button-content">
+    <ng-content></ng-content>
+  </span>
+} @else {
+  <span class="loader-container">
+    <span class="spinner"></span>
+    @if (loadingText) {
+      <span>{{ loadingText }}</span>
+    }
+  </span>
+}
+    </button>

@@ -1,7 +1,12 @@
-export interface Iplan {
+export interface Iplanresponse {
   Success: boolean;
   Message: string;
-  Data: {
+  Data:    IPlansData[];
+  Errors: string[];
+}
+
+export interface IPlansData{
+   
     Id: string;
     CurrentState: number;
     Name: string;
@@ -12,6 +17,5 @@ export interface Iplan {
     MaxSimultaneousDevices: number;
     MaxDownloadDevices: number;
     SpatialAudio: string;
-  }[];
-  Errors: string[];
+  
 }

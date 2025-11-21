@@ -1,12 +1,7 @@
 <main id="main" class="container">
   <button class="back-btn" routerLink="/signup/choose-payment">
     <svg class="icon-sm" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
-        d="M15 19l-7-7 7-7"
-      ></path>
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
     </svg>
     Change payment method
   </button>
@@ -17,158 +12,127 @@
 
     <div class="cards">
       <div class="visa">
-        <img
-          src="https://assets.nflxext.com/siteui/acquisition/payment/ffe/paymentpicker/VISA@2x.png"
-          alt="Visa"
-        />
+        <img src="https://assets.nflxext.com/siteui/acquisition/payment/ffe/paymentpicker/VISA@2x.png" alt="Visa" />
       </div>
 
       <div class="mastercard">
-        <img
-          src="https://assets.nflxext.com/siteui/acquisition/payment/ffe/paymentpicker/MASTERCARD@2x.png"
-          alt="MasterCard"
-        />
+        <img src="https://assets.nflxext.com/siteui/acquisition/payment/ffe/paymentpicker/MASTERCARD@2x.png" alt="MasterCard" />
       </div>
     </div>
   </div>
 
   <form class="form" [formGroup]="cardPaymentForm" (ngSubmit)="submit()">
 
-    <!-- Card Number -->
-  <div
-  class="input-wrapper"
-  [class.error]="cardPaymentForm.get('cardNumber')?.invalid && cardPaymentForm.get('cardNumber')?.touched"
-  [class.valid]="cardPaymentForm.get('cardNumber')?.valid && cardPaymentForm.get('cardNumber')?.touched"
->
-  <input
-    type="text"
-    placeholder="Card number"
-    class="input"
-    formControlName="cardNumber"
-    maxlength="19"
-    cardNumberFormatter
-  />
+    <!-- CARD NUMBER -->
+    <div class="input-wrapper card-input-wrapper"
+         [class.error]="cardPaymentForm.get('cardNumber')?.invalid && cardPaymentForm.get('cardNumber')?.touched"
+         [class.valid]="cardPaymentForm.get('cardNumber')?.valid && cardPaymentForm.get('cardNumber')?.touched">
 
-  @if (cardPaymentForm.get('cardNumber')?.hasError('required') && cardPaymentForm.get('cardNumber')?.touched) {
-    <p class="error-message">Card number is required</p>
-  }
-
-  @if (cardPaymentForm.get('cardNumber')?.hasError('invalidCard') && cardPaymentForm.get('cardNumber')?.dirty) {
-    <p class="error-message">Card number must contain numbers only</p>
-  }
-
-  @if (cardPaymentForm.get('cardNumber')?.hasError('invalidLength') && cardPaymentForm.get('cardNumber')?.touched) {
-    <p class="error-message">Card number must be exactly 16 digits</p>
-  }
-</div>
-
-
-    <!-- Expiration + CVV -->
-    <div class="row">
-  <!-- Expiration -->
-  <div
-    class="input-wrapper"
-    [class.error]="cardPaymentForm.get('expDate')?.invalid && cardPaymentForm.get('expDate')?.touched"
-    [class.valid]="cardPaymentForm.get('expDate')?.valid && cardPaymentForm.get('expDate')?.touched"
-  >
-    <input
-      type="text"
-      placeholder="MM/YY"
-      class="input"
-      formControlName="expDate"
-      maxlength="5"
-    />
-
-    @if (cardPaymentForm.get('expDate')?.hasError('required') && cardPaymentForm.get('expDate')?.touched) {
-      <p class="error-message">Expiration date is required</p>
-    }
-
-    @if (cardPaymentForm.get('expDate')?.hasError('pattern') && cardPaymentForm.get('expDate')?.touched) {
-      <p class="error-message">Enter a valid date (MM/YY)</p>
-    }
-    @if (cardPaymentForm.get('expDate')?.hasError('expired') && cardPaymentForm.get('expDate')?.touched) {
-  <p class="error-message">Expiration date cannot be in the past</p>
+      <input
+  type="text"
+  placeholder="Card number"
+  class="input"
+  formControlName="cardNumber"
+  maxlength="23"
+  cardNumberFormatter
+/>
+@if (
+  cardPaymentForm.get('cardNumber')?.valid &&
+  cardPaymentForm.get('cardNumber')?.touched &&
+  cardType !== 'unknown'
+) {
+  <img class="card-icon" [src]="cardTypeIcon" />
 }
-  </div>
 
-  <!-- CVV -->
-  <div
-    class="input-wrapper"
-    [class.error]="cardPaymentForm.get('cvv')?.invalid && cardPaymentForm.get('cvv')?.touched"
-    [class.valid]="cardPaymentForm.get('cvv')?.valid && cardPaymentForm.get('cvv')?.touched"
-  >
-    <input
-      type="text"
-      placeholder="CVV"
-      class="input"
-      formControlName="cvv"
-      maxlength="4"
-    />
+      
 
-    @if (cardPaymentForm.get('cvv')?.hasError('required') && cardPaymentForm.get('cvv')?.touched) {
-      <p class="error-message">CVV is required</p>
-    }
-
-    @if (cardPaymentForm.get('cvv')?.hasError('pattern') && cardPaymentForm.get('cvv')?.touched) {
-      <p class="error-message">CVV must be 3 or 4 digits</p>
-    }
-  </div>
-</div>
-
-
-    <!-- Name -->
- <div
-  class="input-wrapper"
-  [class.error]="cardPaymentForm.get('name')?.invalid && cardPaymentForm.get('name')?.touched"
-  [class.valid]="cardPaymentForm.get('name')?.valid && cardPaymentForm.get('name')?.touched"
->
-  <input
-    type="text"
-    placeholder="Name on card"
-    class="input"
-    formControlName="name"
-  />
-
-  @if (cardPaymentForm.get('name')?.hasError('required') && cardPaymentForm.get('name')?.touched) {
-    <p class="error-message">Name is required</p>
-  }
-
-  @if (cardPaymentForm.get('name')?.hasError('minlength') && cardPaymentForm.get('name')?.touched) {
-    <p class="error-message">Name must be at least 3 characters</p>
-  }
-</div>
- <div class="plan-box">
-    <div>
-      <div class="plan-price">EGP 240/month</div>
-      <div class="plan-type">Premium</div>
+      <!-- PRIORITY ERROR MESSAGES -->
+      <p class="error-message" [hidden]="!cardPaymentForm.get('cardNumber')?.touched || !cardPaymentForm.get('cardNumber')?.hasError('required')">
+        Card number is required
+      </p>
+      <p class="error-message" [hidden]="!cardPaymentForm.get('cardNumber')?.touched || !cardPaymentForm.get('cardNumber')?.hasError('invalidCard') || cardPaymentForm.get('cardNumber')?.hasError('required')">
+        Card number can contain digits only
+      </p>
+      <p class="error-message" [hidden]="!cardPaymentForm.get('cardNumber')?.touched || !cardPaymentForm.get('cardNumber')?.hasError('invalidLength') || cardPaymentForm.get('cardNumber')?.hasError('required') || cardPaymentForm.get('cardNumber')?.hasError('invalidCard')">
+        Card number must be between 13 and 19 digits
+      </p>
+      <p class="error-message" [hidden]="!cardPaymentForm.get('cardNumber')?.touched || !cardPaymentForm.get('cardNumber')?.hasError('invalidLuhn') || cardPaymentForm.get('cardNumber')?.hasError('required') || cardPaymentForm.get('cardNumber')?.hasError('invalidCard') || cardPaymentForm.get('cardNumber')?.hasError('invalidLength')">
+        This card number is not valid. Please check the digits and try again
+      </p>
     </div>
-    <button class="plan-change" type="button" routerLink="/signup/confirm-plan">Change</button>
-  </div>
 
-  <div class="terms">
-    <p>
-      By checking the checkbox below, you agree to our
-      <a href="#" class="link">Terms of Use</a>,
-      <a href="#" class="link">Privacy Statement</a>, and that you are over 18.
-      Netflix will automatically continue your membership and charge the
-      membership fee (currently EGP 240/month) to your payment method until you
-      cancel. You may cancel at any time to avoid future charges.
+    <!-- EXPIRATION + CVV -->
+    <div class="row">
+
+      <!-- EXP DATE -->
+      <div class="input-wrapper"
+           [class.error]="cardPaymentForm.get('expDate')?.invalid && cardPaymentForm.get('expDate')?.touched"
+           [class.valid]="cardPaymentForm.get('expDate')?.valid && cardPaymentForm.get('expDate')?.touched">
+        <input type="text" placeholder="MM/YY" class="input" formControlName="expDate" maxlength="5" />
+
+        <p class="error-message" [hidden]="!cardPaymentForm.get('expDate')?.touched || !cardPaymentForm.get('expDate')?.hasError('required')">
+          Please enter the card expiration date
+        </p>
+        <p class="error-message" [hidden]="!cardPaymentForm.get('expDate')?.touched || !cardPaymentForm.get('expDate')?.hasError('pattern') || cardPaymentForm.get('expDate')?.hasError('required')">
+          Expiration date must be in MM/YY format (e.g., 09/27)
+        </p>
+        <p class="error-message" [hidden]="!cardPaymentForm.get('expDate')?.touched || !cardPaymentForm.get('expDate')?.hasError('expired') || cardPaymentForm.get('expDate')?.hasError('required') || cardPaymentForm.get('expDate')?.hasError('pattern')">
+          This card appears to be expired. Please enter a valid future date
+        </p>
+      </div>
+
+      <!-- CVV -->
+      <div class="input-wrapper"
+           [class.error]="cardPaymentForm.get('cvv')?.invalid && cardPaymentForm.get('cvv')?.touched"
+           [class.valid]="cardPaymentForm.get('cvv')?.valid && cardPaymentForm.get('cvv')?.touched">
+        <input type="text" placeholder="CVV" class="input" formControlName="cvv" maxlength="4" />
+        <p class="error-message" [hidden]="!cardPaymentForm.get('cvv')?.touched || !cardPaymentForm.get('cvv')?.hasError('required')">
+          Please enter the CVV code found on your card
+        </p>
+        <p class="error-message" [hidden]="!cardPaymentForm.get('cvv')?.touched || !cardPaymentForm.get('cvv')?.hasError('pattern') || cardPaymentForm.get('cvv')?.hasError('required')">
+          CVV must contain 3 or 4 digits
+        </p>
+      </div>
+    </div>
+
+    <!-- NAME -->
+    <div class="input-wrapper"
+         [class.error]="cardPaymentForm.get('name')?.invalid && cardPaymentForm.get('name')?.touched"
+         [class.valid]="cardPaymentForm.get('name')?.valid && cardPaymentForm.get('name')?.touched">
+      <input type="text" placeholder="Name on card" class="input" formControlName="name" />
+      <p class="error-message" [hidden]="!cardPaymentForm.get('name')?.touched || !cardPaymentForm.get('name')?.hasError('required')">
+        Please enter the name printed on your card
+      </p>
+      <p class="error-message" [hidden]="!cardPaymentForm.get('name')?.touched || !cardPaymentForm.get('name')?.hasError('minlength') || cardPaymentForm.get('name')?.hasError('required')">
+        Name must be at least 3 characters
+      </p>
+    </div>
+
+    <div class="plan-box">
+      <div>
+        <div class="plan-price">EGP 240/month</div>
+        <div class="plan-type">Premium</div>
+      </div>
+      <button class="plan-change" type="button" routerLink="/signup/confirm-plan">Change</button>
+    </div>
+
+    <div class="terms">
+      <p>By checking the checkbox below, you agree to our Terms of Use and Privacy Statement.</p>
+    </div>
+
+    <label class="checkbox-row"
+           [class.error-text]="cardPaymentForm.get('agree')?.invalid && cardPaymentForm.get('agree')?.touched">
+      <input type="checkbox" class="checkbox" formControlName="agree" />
+      <span>I agree.</span>
+    </label>
+    <p class="error-message" [hidden]="!cardPaymentForm.get('agree')?.touched || !cardPaymentForm.get('agree')?.invalid">
+      You need to agree before continuing
     </p>
-  </div>
-    <!-- Agree -->
-  <label
-  class="checkbox-row"
-  [class.error-text]="cardPaymentForm.get('agree')?.invalid && cardPaymentForm.get('agree')?.touched"
->
-  <input type="checkbox" class="checkbox" formControlName="agree" />
-  <span>I agree.</span>
-</label>
 
-@if (cardPaymentForm.get('agree')?.invalid && cardPaymentForm.get('agree')?.touched) {
-  <p class="error-message">You must agree before continuing</p>
-}
+    <!-- <button class="submit-btn" type="submit">Start Membership</button> -->
+<div class="mt-5">
+             <app-buutton [disabled]="isDisabled()" [isLoading]="isloading()" [buttonClass]="'largeBtn'" (onClick)="onStartMemberShip()" [type]="'submit'">Start Membership</app-buutton>
 
-
-    <button class="submit-btn" type="submit">Start Membership</button>
+</div>
   </form>
 </main>

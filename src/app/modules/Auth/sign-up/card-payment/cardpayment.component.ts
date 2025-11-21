@@ -1,94 +1,68 @@
-
-import { Component, inject, OnInit } from "@angular/core";
+import { Component, inject, OnInit, signal } from "@angular/core";
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from "@angular/forms";
 import { RouterLink } from "@angular/router";
-import { CardNumberFormatterDirective } from "./card-number-formatter";
+import { CardNumberFormatterDirective } from "./directive/card-number-formatter";
 
-
+import {
+  digitsOnlyValidator,
+  cardLengthValidator,
+  luhnValidator,
+  expirationValidator
+} from "./custom-validators/card-validators";
+import { Buutton } from "../../../shared/buutton/buutton";
 @Component({
   selector: "lib-cardpayment.component",
-  imports: [RouterLink , ReactiveFormsModule ,CardNumberFormatterDirective ],
+  imports: [RouterLink, ReactiveFormsModule, CardNumberFormatterDirective, Buutton],
   templateUrl: "./cardpayment.component.html",
-  styleUrl: "./cardpayment.component.css",
+  styleUrls: ["./cardpayment.component.css"], // صححتها
 })
 export class CardpaymentComponent implements OnInit {
+onStartMemberShip() {
+throw new Error('Method not implemented.');
+}
 
   cardPaymentForm!: FormGroup;
+  cardType: 'visa' | 'mastercard' | 'unknown' = 'unknown';
+
   private fb = inject(FormBuilder);
 
   ngOnInit(): void {
     this.cardPaymentForm = this.fb.group({
-     cardNumber: [
-  "",
-  [
-    Validators.required,
-    (control: { value: string }) => {
-      const clean = control.value.replace(/\s/g, "");
+      cardNumber: ["", [Validators.required, digitsOnlyValidator, cardLengthValidator, luhnValidator]],
+      expDate: ["", [Validators.required, expirationValidator]],
+      cvv: ["", [Validators.required, Validators.pattern(/^[0-9]{3,4}$/)]],
+      name: ["", [Validators.required, Validators.minLength(3)]],
+      agree: [false, Validators.requiredTrue],
+    });
 
-      if (!/^[0-9]+$/.test(clean)) {
-        return { invalidCard: true }; // لو فيه حروف
-      }
-
-      if (clean.length !== 16) {
-        return { invalidLength: true }; // الرقم لازم يكون 16 رقم
-      }
-
-      return null; // تمام
-    }
-  ]
-],
-     expDate: [
-  "",
-  [
-    Validators.required,
-    Validators.pattern(/^(0[1-9]|1[0-2])\/?([0-9]{2})$/), // MM/YY
-    (control: { value: string }) => {
-      if (!control.value) return null;
-
-      const [monthStr, yearStr] = control.value.split("/");
-      if (!monthStr || !yearStr) return null;
-
-      const month = +monthStr;
-      const year = +("20" + yearStr); // تحويل YY إلى YYYY
-
-      const now = new Date();
-      const currentMonth = now.getMonth() + 1;
-      const currentYear = now.getFullYear();
-
-      if (year < currentYear || (year === currentYear && month < currentMonth)) {
-        return { expired: true }; // تاريخ في الماضي
-      }
-
-      return null;
-    }
-  ]
-],
-      cvv: [
-        "",
-        [
-          Validators.required,
-          Validators.pattern(/^[0-9]{3,4}$/) // Visa/Master 3، Amex 4
-        ]
-      ],
-      name: [
-        "",
-        [
-          Validators.required,
-          Validators.minLength(3)
-        ]
-      ],
-      agree: [false, Validators.requiredTrue]
+    this.cardPaymentForm.get('cardNumber')?.valueChanges.subscribe(value => {
+      this.cardType = this.detectCardType(value);
     });
   }
+
+  
+
+  detectCardType(cardNumber: string): 'visa' | 'mastercard' | 'unknown' {
+    const clean = (cardNumber || "").replace(/\s+/g, "");
+    if (/^4[0-9]{0,}$/.test(clean)) return 'visa';
+    if (/^5[1-5][0-9]{0,}$/.test(clean)) return 'mastercard';
+    return 'unknown';
+  }
+ get cardTypeIcon(): string {
+    if (this.cardType === 'visa') return 'https://assets.nflxext.com/siteui/acquisition/payment/ffe/paymentpicker/VISA@2x.png';
+    if (this.cardType === 'mastercard') return 'https://assets.nflxext.com/siteui/acquisition/payment/ffe/paymentpicker/MASTERCARD@2x.png';
+    return '';
+  }
+    isloading = signal<boolean>(false);
+  isDisabled = signal<boolean>(false);
+
 
   submit() {
     if (this.cardPaymentForm.invalid) {
       this.cardPaymentForm.markAllAsTouched();
       return;
     }
-
     console.log("Form Submitted:", this.cardPaymentForm.value);
   }
+  
 }
-
-

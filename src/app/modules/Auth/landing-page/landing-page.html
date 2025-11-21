@@ -41,7 +41,6 @@
           </div>
         </div>
       </div>
-      <button btn="signin" routerLink="/login">sign in</button>
     </app-header>
 
     <section
@@ -65,16 +64,20 @@
               class="form-control email-input py-3"
               placeholder="Email address"
             />
+         
           </div>
 
           <div class="col-12 col-md-auto align-content-center justify-content-center">
-            <button
-              (click)="onGetStartedClick(email.value)"
-              class="btn d-flex justify-content-center align-content-center"
-             
+            <app-buutton
+              [buttonClass]="'meduimBtn'"
+              [disabled]="isDisabled()"
+              [isLoading]="isloading()"
+              (onClick)="onGetStartedClick(email.value)"
             >
-              <p class="m-0">Get Started</p>
-              <div aria-hidden="true" class="default-ltr-iqcdef-cache-1ptol5a ea2wixt0">
+              Get Started
+            </app-buutton>
+
+            <!-- <div aria-hidden="true" class="default-ltr-iqcdef-cache-1ptol5a ea2wixt0">
                 <svg
                   viewBox="0 0 24 24"
                   width="24"
@@ -93,8 +96,7 @@
                     clip-rule="evenodd"
                   ></path>
                 </svg>
-              </div>
-            </button>
+              </div> -->
           </div>
         </div>
       </div>

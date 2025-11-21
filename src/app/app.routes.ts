@@ -13,6 +13,7 @@ import { CashpaymentComponent } from './modules/Auth/sign-up/cash-payment/cashpa
 import { LoginWithPassword } from './modules/Auth/login/login-with-password/login-with-password';
 import { LoginWithCode } from './modules/Auth/login/login-with-code/login-with-code';
 import { OTP } from './modules/Auth/login/otp/otp';
+import { Browse } from './modules/browse/components/browse/browse';
 
 export const routes: Routes = [
     {path:'' , component:LandingPage},
@@ -33,4 +34,5 @@ export const routes: Routes = [
         {path:'cash-payment' , component:CashpaymentComponent},
 
     ]},
+    {path:"browse" ,component:Browse}
 ];

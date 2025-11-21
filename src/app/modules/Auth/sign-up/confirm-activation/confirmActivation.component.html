@@ -20,7 +20,8 @@
     <span>Please do not email me Netflix special offers.</span>
   </label>
 
-  <button class="submit-btn"  (click)="sendEmail()">
+  <!-- <button class="submit-btn"  (click)="sendEmail()">
     Send link
-  </button>
+  </button> -->
+  <app-buutton [disabled]="isDisabled()" [isLoading]="isloading()" [buttonClass]="'largeBtn'" (onClick)="sendEmail()">Send link</app-buutton>
 </main>

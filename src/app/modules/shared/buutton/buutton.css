@@ -1,0 +1,49 @@
+ button {
+      position: relative;
+      transition: all 0.3s;
+    }
+    
+    .spinner {
+      display: inline-block;
+      width: 1em;
+      height: 1em;
+      border: 2px solid rgba(255,255,255,0.3);
+      border-top-color: white;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    .smallBtn{
+         padding:5px 18px;
+    border-radius: 0.25rem;
+    background: rgb(229, 9, 20);
+    color: rgb(255, 255, 255);
+    font-size: 17px;
+    border: none;
+    }
+    .meduimBtn{
+         padding: 10px 20px;
+    border-radius: 5px;
+    background: rgb(229, 9, 20);
+    color: rgb(255, 255, 255);
+    border: 1px solid  rgb(229, 9, 20);
+    font-size: 22px;
+    font-weight: 500;
+    }
+    .largeBtn{
+       width: 100%;
+        background: #e50914;
+        color: white;
+        border: none;
+        padding: 1rem;
+        font-size: 1.25rem;
+        font-weight: bold;
+        border-radius: 6px;
+        cursor: pointer;
+    }
+    .largeBtn:hover{
+      background: #c40812;
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }

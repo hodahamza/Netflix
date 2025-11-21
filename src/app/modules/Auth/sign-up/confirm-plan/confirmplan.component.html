@@ -7,151 +7,86 @@
       </h1>
     </div>
 
-    <form class="plans-grid" >
+    <section class="plans-grid">
       <!-- BASIC -->
-      <label>
-        <input type="radio" name="plan" class="plan-input" />
-
-        <div class="plan-card">
-          <div class="plan-header-basic">
-            <h2 style="font-size: 20px; margin: 0">Basic</h2>
-            <p style="opacity: 0.9; margin: 4px 0 0">720p</p>
+      @for (plan of plansData(); track plan.Id) {
+      <div
+        [class.selected]="plan.Id === selectedPlanId()"
+        class="plan-card"
+        #planDiv
+        attr.planId="{{ plan.Id }}"
+        (click)="onPlanClicked(planDiv)"
+      >
+        <div
+          class="position-relative"
+          [class.plan-header-basic]="plan.Name.toLowerCase() === 'Basic'.toLowerCase()"
+          [class.plan-header-standard]="plan.Name.toLowerCase() === 'Standared'.toLowerCase()"
+          [class.plan-header-premium]="plan.Name.toLowerCase() === 'Premium'.toLowerCase()"
+        >
+          <h2 style="font-size: 20px; margin: 0">{{ plan.Name }}</h2>
+          <p style="opacity: 0.9; margin: 4px 0 0">{{ plan.Resolution }}</p>
+          @if(plan.Id === selectedPlanId()){
+          <div class="badge">
+            <svg
+              width="22"
+              height="18"
+              viewBox="0 0 24 22"
+              fill="none"
+              class="success-icon"
+              data-uia="success-svg"
+            >
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M12.0183 21.0833C17.7761 21.0833 22.4438 16.5688 22.4438 11C22.4438 5.43112 17.7761 0.916656 12.0183 0.916656C6.26044 0.916656 1.59277 5.43112 1.59277 11C1.59277 16.5688 6.26044 21.0833 12.0183 21.0833ZM11.7407 14.3982L17.4273 8.89817L16.087 7.60181L11.0705 12.4536L8.89738 10.3518L7.55702 11.6482L10.4004 14.3982L11.0705 15.0463L11.7407 14.3982Z"
+                fill="#ffffff"
+              ></path>
+            </svg>
           </div>
-          <div class="plan-content">
-            <p class="label-small">Monthly price</p>
-            <p class="value-large">EGP 100</p>
-            <hr />
-
-            <p class="label-small">Video and sound quality</p>
-            <p class="value-large">Good</p>
-            <hr />
-
-            <p class="label-small">Resolution</p>
-            <p class="value-large">720p (HD)</p>
-            <hr />
-
-            <p class="label-small">Supported devices</p>
-            <p class="value-large">TV, computer, mobile, tablet</p>
-            <hr />
-
-            <p class="label-small">Streams at the same time</p>
-            <p class="value-large">1</p>
-            <hr />
-
-            <p class="label-small">Download devices</p>
-            <p class="value-large">1</p>
-          </div>
+          }
         </div>
-      </label>
+        <div class="plan-content">
+          <p class="label-small">Monthly price</p>
+          <p class="value-large">
+            {{ plan.PricePerMonth | currency : 'EGP' : 'symbol' : '1.0-0' }}
+          </p>
+          <hr />
 
-      <!-- STANDARD -->
-      <label>
-        <input type="radio" name="plan" class="plan-input" />
+          <p class="label-small">Video and sound quality</p>
+          <p class="value-large">{{ plan.VideoAndSoundQuality }}</p>
+          <hr />
 
-        <div class="plan-card">
-          <div class="plan-header-standard">
-            <h2 style="font-size: 20px; margin: 0">Standard</h2>
-            <p style="opacity: 0.9; margin: 4px 0 0">1080p</p>
-          </div>
+          <p class="label-small">Resolution</p>
+          <p class="value-large">{{ plan.Resolution }}</p>
+          <hr />
 
-          <div class="plan-content">
-            <p class="label-small">Monthly price</p>
-            <p class="value-large">EGP 170</p>
-            <hr />
-            <p class="label-small">Video and sound quality</p>
-            <p class="value-large">Great</p>
-            <hr />
+          <p class="label-small">Supported devices</p>
+          <p class="value-large">{{ plan.SupportedDevices }}</p>
+          <hr />
 
-            <p class="label-small">Resolution</p>
-            <p class="value-large">1080p (Full HD)</p>
-            <hr />
+          <p class="label-small">Streams at the same time</p>
+          <p class="value-large">{{ plan.MaxSimultaneousDevices }}</p>
+          <hr />
 
-            <p class="label-small">Supported devices</p>
-            <p class="value-large">TV, computer, mobile, tablet</p>
-            <hr />
-
-            <p class="label-small">Streams at the same time</p>
-            <p class="value-large">2</p>
-            <hr />
-
-            <p class="label-small">Download devices</p>
-            <p class="value-large">2</p>
-          </div>
+          <p class="label-small">Download devices</p>
+          <p class="value-large">{{ plan.MaxDownloadDevices }}</p>
         </div>
-      </label>
-
-      <!-- PREMIUM -->
-      <label>
-        <input type="radio" name="plan" class="plan-input" />
-
-        <div class="plan-card">
-          <div class="badge">Most Popular</div>
-
-          <div class="plan-header-premium">
-            <h2 style="font-size: 20px; margin: 0">Premium</h2>
-            <p style="opacity: 0.9; margin: 4px 0 0">4K + HDR</p>
-
-            <div class="premium-dot"></div>
-          </div>
-
-          <div class="plan-content">
-            <p class="label-small">Monthly price</p>
-            <p class="value-large">EGP 240</p>
-            <hr />
-
-            <p class="label-small">Video and sound quality</p>
-            <p class="value-large">Best</p>
-            <hr />
-
-            <p class="label-small">Resolution</p>
-            <p class="value-large">4K (Ultra HD) + HDR</p>
-            <hr />
-
-            <p class="label-small">Spatial audio</p>
-            <p class="value-large">Included</p>
-            <hr />
-
-            <p class="label-small">Supported devices</p>
-            <p class="value-large">TV, computer, mobile, tablet</p>
-            <hr />
-
-            <p class="label-small">Streams at the same time</p>
-            <p class="value-large">4</p>
-            <hr />
-
-            <p class="label-small">Download devices</p>
-            <p class="value-large">6</p>
-          </div>
-        </div>
-      </label>
-    </form>
+      </div>
+      }
+    </section>
 
     <p class="note">
-      HD, Full HD, Ultra HD and HDR availability depends on your device and
-      internet. Some titles may not be available in all resolutions. See
+      HD, Full HD, Ultra HD and HDR availability depends on your device and internet. Some titles
+      may not be available in all resolutions. See
       <a href="#">Terms of Use</a> for more details.
     </p>
     <p class="note">
-      Only people who live with you may use your account. Watch on 4 different
-      devices at the same time with Premium, 2 with Standard and 1 with Basic.
+      Only people who live with you may use your account. Watch on 4 different devices at the same
+      time with Premium, 2 with Standard and 1 with Basic.
     </p>
-    <p class="note">
-      Live events are included with any Netflix plan and contain ads.
-    </p>
+    <p class="note">Live events are included with any Netflix plan and contain ads.</p>
     <div style="display: flex; justify-content: center; margin-top: 2rem">
-      <button class="btn-primary" >
-        Next
-      </button>
+      <button class="btn-primary" (click)="onSubmit()">Next</button>
     </div>
   </div>
 </main>
-
-<!-- 
-routerLink="/signup/choose-payment"
-<label (click)="selectPlan(plans[0])">
-  <input type="radio" name="plan" class="plan-input" />
-  <div class="plan-card"> … </div>
-</label> 
-
-
--->

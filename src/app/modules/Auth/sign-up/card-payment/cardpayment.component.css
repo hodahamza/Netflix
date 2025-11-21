@@ -1,10 +1,4 @@
-
-
-
-/*  */
-
-
-/* Global */
+/* === Base Styles === */
 * {
     margin: 0;
     padding: 0;
@@ -12,7 +6,6 @@
     font-family: Arial, sans-serif;
 }
 
-/* Back button */
 .back-btn {
     margin-bottom: 1rem;
     color: #2563eb;
@@ -24,30 +17,32 @@
     font-size: 16px;
     cursor: pointer;
 }
+
 .back-btn:hover {
     color: #1e40af;
 }
+
 .icon-sm {
     width: 16px;
     height: 16px;
 }
 
-/* Main container */
 .container {
     max-width: 420px;
     margin: auto;
     padding: 2rem 1rem 2rem;
 }
 
-/* Step text */
 .step-box {
     margin-bottom: 24px;
 }
+
 .step {
     font-size: 14px;
     color: #6b7280;
     margin-bottom: 8px;
 }
+
 .title {
     font-size: 24px;
     font-weight: bold;
@@ -55,24 +50,27 @@
     margin-bottom: 16px;
 }
 
-/* Card logos */
 .cards {
     display: flex;
     gap: 10px;
+    margin-bottom: 16px;
 }
-.visa, .mastercard {
+
+.visa,
+.mastercard {
     width: 40px;
     height: 24px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.visa img, .mastercard img {
+
+.visa img,
+.mastercard img {
     width: 100%;
     object-fit: contain;
 }
 
-/* Form */
 .form {
     margin-top: 16px;
     margin-bottom: 24px;
@@ -82,6 +80,7 @@
     position: relative;
     margin-bottom: 1rem;
 }
+
 .input {
     width: 100%;
     padding: 12px 14px;
@@ -90,6 +89,7 @@
     font-size: 15px;
     transition: color 0.8s ease-in-out;
 }
+
 .input:focus {
     outline: 2px solid rgba(37, 99, 235, 0);
     border: 1px solid #666769;
@@ -102,12 +102,11 @@
 }
 
 @media (max-width:300px) {
-  .row {
-    grid-template-columns: 1fr;
-  }
+    .row {
+        grid-template-columns: 1fr;
+    }
 }
 
-/* Plan summary */
 .plan-box {
     background: #f3f4f6;
     padding: 16px;
@@ -117,14 +116,17 @@
     align-items: center;
     margin-bottom: 24px;
 }
+
 .plan-price {
     font-weight: bold;
     color: #111827;
 }
+
 .plan-type {
     font-size: 14px;
     color: #6b7280;
 }
+
 .plan-change {
     background: none;
     border: none;
@@ -136,30 +138,23 @@
     text-decoration: underline;
 }
 
-
-/* Terms text */
 .terms {
     font-size: 14px;
     color: #4b5563;
     margin-bottom: 24px;
 }
-.link {
-    color: #2563eb;
-    text-decoration: underline;
-}
 
-/* Checkbox */
 .checkbox-row {
     display: flex;
     align-items: center;
     gap: 8px;
 }
+
 .checkbox {
     width: 16px;
     height: 16px;
 }
 
-/* Submit button */
 .submit-btn {
     width: 100%;
     background: #e50914;
@@ -171,15 +166,16 @@
     margin-top: 1.5rem;
     cursor: pointer;
 }
+
 .submit-btn:hover {
     background: #b2070f;
 }
 
-/* Error styles */
 .input-wrapper.error .input {
     border-color: #e50914 !important;
     background: #ffe5e5 !important;
 }
+
 .input-wrapper.error .input:focus {
     outline: 2px solid #e50914 !important;
 }
@@ -195,11 +191,26 @@
     padding-left: 5px;
 }
 
-/* Valid Style */
 .input-wrapper.valid .input {
     border-color: #22c55e !important;
     background: #e6f9ee !important;
 }
+
 .input-wrapper.valid .input:focus {
     outline: 2px solid #22c55e !important;
+}
+
+/* === CARD ICON === */
+.card-input-wrapper {
+    position: relative;
+}
+
+.card-icon {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 32px;
+    height: 20px;
+     pointer-events: none; 
 }

@@ -14,19 +14,32 @@ export class StorageService {
   }
 
   // ===== TOKEN =====
-  saveTokenToStorage(token: string) {
+  saveAccessToken(token: string) {
     if (this.isBrowser()) {
-      localStorage.setItem("Token", token);
+      localStorage.setItem("AccessToken", token);
     }
   }
 
-  get getToken(): string | null {
+  get getAccessToken(): string | null {
     if (this.isBrowser()) {
-      return localStorage.getItem("Token");
+      return localStorage.getItem("AccessToken");
     }
     return null; // SSR
   }
 
+
+    saveRefrechToken(refToken:string){
+     if (this.isBrowser()) {
+      localStorage.setItem("RefToken", refToken);
+    }
+  }
+
+  get getRefToken():string|null{
+     if (this.isBrowser()) {
+      return localStorage.getItem("RefToken");
+    }
+    return null;
+  }
 
   // ===== EMAIL =====
   saveEmail(email: string) {
@@ -41,4 +54,6 @@ export class StorageService {
     }
     return "No Email"; // SSR fallback
   }
+
+
 }

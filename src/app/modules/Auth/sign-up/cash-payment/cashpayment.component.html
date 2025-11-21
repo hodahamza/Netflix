@@ -157,6 +157,8 @@
     </div>
 
     <!-- BUTTON -->
-    <button class="start-btn" [disabled]="f.invalid">Start Membership</button>
+    <!-- <button class="start-btn" [disabled]="f.invalid">Start Membership</button> -->
+                <app-buutton [disabled]="isDisabled()" [isLoading]="isloading()" [buttonClass]="'largeBtn'" (onClick)="onStartMemberShip()" [type]="'submit'">Start Membership</app-buutton>
+
   </form>
 </main>

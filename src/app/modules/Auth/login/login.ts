@@ -1,5 +1,5 @@
 import { Component, ViewEncapsulation } from '@angular/core';
-import { Footer } from "../../footer/footer";
+import { Footer } from "../../shared/footer/footer";
 import { RouterLink, RouterOutlet } from '@angular/router';
 
 

@@ -17,12 +17,10 @@
       
       
     </div>
-    <div class="btn-signin">
     
-      <ng-content select="[btn='signin']"></ng-content>
-      
-      
-    </div>
+       <app-buutton [buttonClass]="'smallBtn'" routerLink="/login">
+      sign in
+      </app-buutton> 
   </div>
   </div>
 </header>
