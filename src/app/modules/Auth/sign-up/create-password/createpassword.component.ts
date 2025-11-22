@@ -23,8 +23,8 @@ export class CreatepasswordComponent {
   this._authService.registerWithEmailAndPass(regisObj).subscribe({
     next:(res)=>{
       console.log(res);
-      this.StorageService.saveAccessToken(res.data?.accessToken as string)
-        this.StorageService.saveRefrechToken((res.data?.refreshToken) as string)
+      this.StorageService.saveAccessToken(res.Data?.AccessToken as string)
+        this.StorageService.saveRefrechToken((res.Data?.RefreshToken) as string)
       this._router.navigateByUrl("/signup/choose-plan")
     },
     error:(err)=>{console.log(err)},

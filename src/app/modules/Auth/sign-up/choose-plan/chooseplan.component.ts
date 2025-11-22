@@ -3,6 +3,7 @@ import { Component, inject, signal } from "@angular/core";
 import { ActivatedRoute, RouterLink } from "@angular/router";
 import { AuthService } from "../../services/auth";
 import { ConfirmEmailRequest } from "../../interfaces/iConfirmmail";
+import { log } from 'node:console';
 
 @Component({
   selector: "lib-chooseplan.component",
@@ -44,10 +45,12 @@ export class ChooseplanComponent {
     this.authService.confrmMail(confirmMailRequest).subscribe({
       next:(res)=>{
         console.log("from confirm plan sucess",res);
-        this.StorageService.saveAccessToken(this.email() as string)
-        // this.StorageService.saveRefrechToken((res.data?.refreshToken) as string)
-        // console.log('access token',this.StorageService.getAccessToken);
-        // console.log('refToken',this.StorageService.getRefToken);
+        console.log(res.Data?.AccessToken);
+        
+        this.StorageService.saveAccessToken(res.Data?.AccessToken as string)
+        this.StorageService.saveRefrechToken((res.Data?.RefreshToken) as string)
+        console.log('access token',this.StorageService.getAccessToken);
+        console.log('refToken',this.StorageService.getRefToken);
         
 
       },error:(err)=>{

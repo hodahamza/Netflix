@@ -4,15 +4,15 @@ export interface ConfirmEmailRequest {
 }
 
 export interface ConfirmEmailData {
-  accessToken: string;
-  refreshToken: string;
-  userId: string;
-  email: string;
+  AccessToken: string;
+  RefreshToken: string;
+  UserId: string;
+  Email: string;
 }
 
 export interface ConfirmEmailResponse {
-  success: boolean;
-  message: string;
-  data: ConfirmEmailData | null;
-  errors: string[] | null;
+  Success: boolean;
+  Message: string;
+  Data: ConfirmEmailData | null;
+  Errors: string[] | null;
 }
