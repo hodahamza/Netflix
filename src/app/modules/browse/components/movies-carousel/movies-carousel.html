@@ -1,0 +1,97 @@
+<div class="carousel-wrapper">
+  <h2 class="carousel-title">Arabic Movies & TV</h2>
+
+  <div class="carousel-section">
+
+    <!-- Right Arrow -->
+    <button class="nav-btn nav-btn-right" (click)="scroll('right')">
+      <div class="arrow-rigth d-flex justify-content-center align-items-center">
+        <i class="fa-solid fa-angle-right"></i>
+      </div>
+    </button>
+
+    <!-- Scroll Wrapper -->
+    <div class="carousel-scroll-wrapper" #carouselTrack>
+
+      <div class="carousel-track">
+
+        @for (movie of movies; track movie.id) {
+
+        <div
+          class="movie-card h-100"
+          (mouseenter)="onMouseEnter(movie)"
+          (mouseleave)="onMouseLeave()"
+          [class.hovered]="hoveredMovie?.id === movie.id"
+        >
+
+          <!-- Default Image (hidden when video is playing) -->
+          @if (!(showVideo && hoveredMovie?.id === movie.id)) {
+            <div class="position-relative">
+              <img [src]="movie.img" [alt]="movie.title" class="movie-img" />
+
+              @if (movie.top10) {
+                <div class="top10-badge">TOP 10</div>
+              }
+            </div>
+          }
+
+          <!-- Video Preview -->
+          @if (showVideo && hoveredMovie?.id === movie.id) {
+            <video
+              [src]="movie.video"
+              class="movie-video"
+              autoplay
+              muted
+              (loadeddata)="onVideoLoaded($event)"
+              (ended)="onVideoEnded($event)"
+            ></video>
+          }
+
+          <!-- Hover Info -->
+          @if (hoveredMovie?.id === movie.id) {
+            <div class="hover-inf">
+              <div class="action-buttons">
+                <div class="buttons-left">
+                  <button class="action-btn play-btn d-flex align-items-center justify-content-center">
+                    <i class="fa-solid fa-play"></i>
+                  </button>
+                  <button class="action-btn d-flex align-items-center justify-content-center">
+                    <i class="fa-solid fa-plus"></i>
+                  </button>
+                </div>
+
+                <button class="action-btn d-flex align-items-center justify-content-center">
+                  <i class="fa-solid fa-angle-down"></i>
+                </button>
+              </div>
+
+              <div class="movie-meta">
+                <span class="rating-badge">5</span>
+                <span class="duration">120min</span>
+                <span class="quality-badge">hd</span>
+              </div>
+
+              <div class="movie-tags">
+                <span>action</span>
+              </div>
+            </div>
+          }
+
+        </div>
+        }
+
+      </div>
+    </div>
+
+    <!-- Left Arrow -->
+    <button class="nav-btn nav-btn-left" (click)="scroll('left')">
+      <div class="arrow-left d-flex justify-content-center align-items-center">
+        <i class="fa-solid fa-angle-left"></i>
+      </div>
+    </button>
+
+  </div>
+
+</div>
+
+<div class="bg-danger">sss</div>

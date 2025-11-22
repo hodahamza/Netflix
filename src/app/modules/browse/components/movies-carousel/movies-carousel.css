@@ -1,0 +1,258 @@
+.carousel-wrapper {
+  /* background-color: #141414; */
+  padding: 24px;
+  font-family: Arial, sans-serif;
+  /* background-color: #e50914; */
+}
+
+.carousel-title {
+  color: #fff;
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.carousel-section {
+  position: relative; /* مهم جداً عشان الأزرار تتموضع صح */
+  padding: 0 5px;
+  height: 130px; 
+  overflow-y: visible;
+}
+
+.carousel-section:hover .nav-btn {
+  opacity: 1;
+}
+
+.carousel-scroll-wrapper{
+  scrollbar-width: none; 
+  z-index: 12;
+}
+
+.carousel-track {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: calc((100% - (6 * 8px)) / 7); /* 7 كاردات */
+  gap: 8px;
+  /* padding: 30px 20px;  */
+  height: 100%;
+  align-items: center;
+}
+.carousel-track {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: calc((100% - (6 * 8px)) / 7);
+  gap: 8px;
+  height: 100%;
+  align-items: center;
+ 
+  scrollbar-width: none; 
+  -ms-overflow-style: none; 
+}
+
+/* Movie Card */
+.movie-card {
+  position: relative;
+  min-width: 180px;
+  /* height: 170PX; */
+  border-radius: 6px;
+  /* overflow: visible; */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  transform-origin: center center;
+}
+
+/* أول كارد يكبر ناحية اليمين */
+.movie-card:first-child {
+  transform-origin: left center;
+}
+
+/* آخر كارد يكبر ناحية الشمال */
+.movie-card:last-child {
+  transform-origin: right center;
+}
+
+/* تاني وتالت كارد يكبروا ناحية اليمين شوية */
+.movie-card:nth-child(2),
+.movie-card:nth-child(3) {
+  transform-origin: left center;
+}
+
+/* قبل الآخر وقبل قبل الآخر يكبروا ناحية الشمال شوية */
+.movie-card:nth-last-child(2),
+.movie-card:nth-last-child(3) {
+  transform-origin: right center;
+}
+
+.movie-card.hovered {
+  transform: scale(1.4) ; /* يكبر ويطلع فوق */
+  z-index: 100;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8); /* ظل قوي */
+  transition: all 0.3s ease;
+    height: 170PX;
+}
+
+.movie-img,
+.movie-video {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9; /* بدل الـ fixed height */
+  object-fit: cover;
+  border-radius: 6px 6px 0 0;
+}
+
+.movie-card:not(.hovered) .movie-img {
+  border-radius: 6px;
+}
+
+.gradient-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent, transparent);
+  pointer-events: none;
+}
+
+.top10-badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background-color: #e50914;
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: bold;
+  padding: 2px 5px;
+  border-radius: 3px;
+  z-index: 10;
+}
+
+/* Hover Info Panel */
+.hover-inf {
+  position: relative;
+  background-color: #181818;
+  padding: 12px;
+  border-radius: 0 0 6px 6px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.8);
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Action Buttons */
+.action-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.buttons-left {
+  display: flex;
+  gap: 6px;
+}
+
+.action-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  background-color: transparent;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  font-size: 14px;
+}
+
+.action-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.action-btn.play-btn {
+  background-color: #fff;
+  color: #000;
+  border-color: #fff;
+}
+
+.action-btn.play-btn:hover {
+  background-color: #e0e0e0;
+}
+
+/* Movie Meta */
+.movie-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.rating-badge {
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  padding: 1px 6px;
+  font-size: 0.7rem;
+  color: #46d369;
+  font-weight: bold;
+}
+
+.duration {
+  color: #fff;
+  font-size: 0.75rem;
+}
+
+.quality-badge {
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  padding: 1px 6px;
+  font-size: 0.65rem;
+  color: #fff;
+  border-radius: 3px;
+  text-transform: uppercase;
+}
+
+/* Tags */
+.movie-tags {
+  color: #aaa;
+  font-size: 0.7rem;
+  line-height: 1.4;
+}
+
+.dot {
+  color: #666;
+  margin: 0 4px;
+}
+
+/* Navigation Buttons */
+.nav-btn {
+  position: absolute;
+  top: 0; /* من فوق */
+  bottom: 0; /* لتحت */
+  margin: auto 0; /* في النص بالضبط */
+  width: 30px;
+  height: 130px; /* نفس ارتفاع الـ section */
+  z-index: 999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999; 
+  background-color: rgba(0, 0, 0, 0.2);
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s ease, background-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+}
+.nav-btn-right{
+  right: 0;
+
+}
