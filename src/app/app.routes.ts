@@ -14,6 +14,10 @@ import { LoginWithPassword } from './modules/Auth/login/login-with-password/logi
 import { LoginWithCode } from './modules/Auth/login/login-with-code/login-with-code';
 import { OTP } from './modules/Auth/login/otp/otp';
 import { Browse } from './modules/browse/components/browse/browse';
+import { HomeComponent } from './modules/browse/components/test/homecomponent/homecomponent';
+import { TvShowsComponent } from './modules/browse/components/test/tvshowscomponent/tvshowscomponent';
+import { MoviesComponent } from './modules/browse/components/test/moviescomponent/moviescomponent';
+import { GamesComponent } from './modules/browse/components/test/gamescomponent/gamescomponent';
 
 export const routes: Routes = [
     {path:'' , component:LandingPage},
@@ -34,5 +38,11 @@ export const routes: Routes = [
         {path:'cash-payment' , component:CashpaymentComponent},
 
     ]},
-    {path:"browse" ,component:Browse}
+    {path:"browse" ,component:Browse},
+    {
+        path:'home',component:HomeComponent
+    },
+  { path: 'tvshows', component: TvShowsComponent },
+  { path: 'movies', component: MoviesComponent },
+  { path: 'games', component: GamesComponent },
 ];
